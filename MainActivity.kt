@@ -1,4 +1,5 @@
 package br.com.fiap.minhaidade
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,7 +22,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -74,10 +74,6 @@ fun CounterScreen(){
         mutableIntStateOf(value = 0)
     }
 
-    var resultado = remember {
-        mutableStateOf(value = "Resultado")
-    }
-
     Column(modifier = Modifier
         .padding(36.dp)
         .fillMaxWidth()) {
@@ -93,10 +89,9 @@ fun CounterScreen(){
         Spacer(modifier = Modifier.height(22.dp))
         Text(
             text = "Aperte os botões para informar a sua idade.",
-            fontSize = 15.sp,
+            fontSize = 14.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
-            fontWeight = FontWeight.Bold,
             )
         Spacer(modifier = Modifier.height(14.dp))
         Box(modifier = Modifier.align(Alignment.CenterHorizontally)) {
@@ -114,13 +109,7 @@ fun CounterScreen(){
 
             Button(
                 onClick = {
-                    if (idade.intValue <0){
-                    idade.intValue-- }
-                    if (idade.intValue >= 18) {
-                        resultado.value = "Você é maior de idade."
-                    } else {
-                        resultado.value = "Você é menor de idade."
-                    }
+                          idade.intValue--
                 },
                 modifier = Modifier.size(84.dp),
                 shape = RoundedCornerShape(8.dp),
@@ -135,13 +124,8 @@ fun CounterScreen(){
 
             Button(
                 onClick = {
-                    if (idade.intValue < 131){
-                    idade.intValue++}
-                    if (idade.intValue >= 18) {
-                        resultado.value = "Você é maior de idade."
-                    } else {
-                        resultado.value = "Você é menor de idade."
-                    }
+                    idade.intValue++
+
                 },
                 modifier = Modifier.size(84.dp),
                 shape = RoundedCornerShape(8.dp),
@@ -152,20 +136,6 @@ fun CounterScreen(){
                     fontSize = 40.sp)
                 }
             }
-        Column (modifier = Modifier
-            .padding(36.dp)
-            .fillMaxWidth()) {
-            Spacer(modifier = Modifier.height(22.dp))
-            Text(
-                text = "${resultado.value}",
-                fontSize = 24.sp,
-                color = Color.Companion.Red,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
-            )
-            Spacer(modifier = Modifier.height(22.dp))
-        }
         }
     }
 
