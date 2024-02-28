@@ -114,12 +114,15 @@ fun CounterScreen(){
 
             Button(
                 onClick = {
-                    if (idade.intValue <0){
+                    if (idade.intValue > 0){
                     idade.intValue-- }
                     if (idade.intValue >= 18) {
                         resultado.value = "Você é maior de idade."
-                    } else {
+                    } else if (idade.value < 18){
                         resultado.value = "Você é menor de idade."
+                    }
+                    if (idade.intValue == 0){
+                        "${resultado.value}"
                     }
                 },
                 modifier = Modifier.size(84.dp),
@@ -139,8 +142,11 @@ fun CounterScreen(){
                     idade.intValue++}
                     if (idade.intValue >= 18) {
                         resultado.value = "Você é maior de idade."
-                    } else {
+                    } else if (idade.value < 18){
                         resultado.value = "Você é menor de idade."
+                    }
+                    if (idade.intValue == 0){
+                        "${resultado.value}"
                     }
                 },
                 modifier = Modifier.size(84.dp),
